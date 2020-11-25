@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+  body {
+    background-image:url('https://cdn.discordapp.com/attachments/762717237290467339/779943227636842506/imageedit_3_9016560597.png');
+    background-size:cover;
+  }
+	.stat-block {
+    background-color:#f0eada;
+    border-style:solid;
+    border-width:5px;
+    border-color:#eddcad;
+    box-shadow: 5px 5px #00000055;
+    width:fit-content;
+    margin:auto;
+    padding-left:5px;
+    padding-right:5px;
+    display: flex;
+    flex-direction: column;
+	}
+	hr {
+    width:98%;
+    height:3px;
+    color:#a61e1e;
+    background-color:#a61e1e;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+	}
+	.name-label {
+    color:#a61e1e;
+    margin:auto;
+    font-size: 2rem;
+	}
+	.stat-label {
+    color:#a61e1e;
+    font-weight: bold;
+    margin-right: 5px;
+	}
+  .stat-row-40 {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+  }
+  .stat-row-60 {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+  }
+  .stat-row-80 {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+	input, select {
+	  background-color:#f2f0eb;
+	}
+	table {
+    margin:auto;
+    width:100%;
+    text-align:center;
+	}
+	th {
+	color:#a61e1e;
+	}
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .double-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+	</style>
+</head>
+<body>
+    {% if challenge_rating %}
+    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+        <div class="stat-block name-label" style="flex-direction: row;">The Challenge Rating is:  <span style="font-weight: bold;">{{challenge_rating}}</span></span></div>
+    </div>
+    {%endif%}
+  <form class="stat-block" action="" method="post">
+    <div><label class="name-label stat-label">Name:</label><input type="text" id="name" name="name" size="35" value="Shmav"></div>
+    <div>
+        <select name="size" style="height: fit-content;">
+            <option value="1">tiny</option>
+            <option value="2">small</option>
+            <option value="3">medium</option>
+            <option value="4">large</option>
+            <option value="5">huge</option>
+            <option value="6">gargantuan</option>
+        </select>
+        <input type="text" id="info" name="info" size="30" value="humanoid"> ,
+        <select id="alignment" name="alignment">
+            <option value="lawful good"> lawful good </option>
+            <option value="neutral good"> neutral good </option>
+            <option value="chaotic good" selected> chaotic good </option>
+            <option value="lawful neutral"> lawful neutral </option>
+            <option value="true neutral"> true neutral </option>
+            <option value="chaotic neutral"> chaotic neutral </option>
+            <option value="lawful evil"> lawful evil </option>
+            <option value="neutral evil"> neutral evil </option>
+            <option value="chaotic evil"> chaotic evil </option>
+            <option value="unaligned"> unaligned </option>
+        </select>
+    </div>
+    <hr>
+    <div class="double-columns">
+      <div class="stat-row-80"> <label class="stat-label">Armor Class</label><input type="number" id="ac" name="ac" min="0" max="10000" value="12"> </div>
+      <div class="stat-row-80"> <label class="stat-label"> Hit Points </label> <input type="number" id="hp" name="hp" min="0" max="10000" value="20"> </div>
+      <div class="stat-row-80"><label class="stat-label"> Speed </label> <span><input type="number" id="speed" name="speed" min="0" max="500" value="30"> ft.</span></div>
+      <div class="stat-row-80"><label class="stat-label"> Burrow Speed </label> <span><input type="number" id="burrow-speed" name="burrow_speed" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80"><label class="stat-label"> Climb Speed </label> <span><input type="number" id="climb-speed" name="climb_speed" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80"><label class="stat-label"> Fly Speed </label> <span><input type="number" id="fly-speed" name="fly_speed" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80"><label class="stat-label"> Swim Speed </label> <span><input type="number" id="swim-speed" name="swim_speed" min="0" max="500" value="0"> ft.</span></div>
+    </div>
+    <hr>
+    <table>
+      <tr>
+        <th> STR </th>
+        <th> DEX </th>
+        <th> CON </th>
+        <th> INT </th>
+        <th> WIS </th>
+        <th> CHA </th>
+      </tr>
+      <tr>
+        <td> <input type="number" id="str" name="str" min="0" max="50" value="8"> </td>
+        <td> <input type="number" id="dex" name="dex" min="0" max="50" value="10"> </td>
+        <td> <input type="number" id="con" name="con" min="0" max="50" value="12"> </td>
+        <td> <input type="number" id="int" name="int" min="0" max="50" value="15"> </td>
+        <td> <input type="number" id="wis" name="wis" min="0" max="50" value="14"> </td>
+        <td> <input type="number" id="cha" name="cha" min="0" max="50" value="13"> </td>
+      </tr>
+    </table>
+    <hr>
+    <label class="stat-label"> Saving Throws </label>
+    <table>
+      <td> <input type="checkbox" id="saving_throw_str" name="saving_throw_str"> <label class="stat-label"> STR </label> </td>
+      <td> <input type="checkbox" id="saving_throw_dex" name="saving_throw_dex"> <label class="stat-label"> DEX </label> </td>
+      <td> <input type="checkbox" id="saving_throw_con" name="saving_throw_con"> <label class="stat-label"> CON </label> </td>
+      <td> <input type="checkbox" id="saving_throw_int" name="saving_throw_int"> <label class="stat-label"> INT </label> </td>
+      <td> <input type="checkbox" id="saving_throw_wis" name="saving_throw_wis"> <label class="stat-label"> WIS </label> </td>
+      <td> <input type="checkbox" id="saving_throw_cha" name="saving_throw_cha"> <label class="stat-label"> CHA </label> </td>
+    </table>
+    <br>
+    <label class="stat-label"> Skills </label>
+    <div class="checkbox-grid">
+      <div> <input type="checkbox" id="skill_athletics" name="skill_athletics" value="athletics"> <label class="skill_athletics"> Athletics </label> </div>
+      <div> <input type="checkbox" id="skill_acrobatics" name="skill_acrobatics" value="acrobatics"> <label class="skill_acrobatics"> Acrobatics </label> </div>
+      <div> <input type="checkbox" id="skill_sleight_of_hand" name="skill_sleight_of_hand" value="sleight_of_hand"> <label class="skill_sleight_of_hand"> Sleight of Hand </label> </div>
+      <div> <input type="checkbox" id="skill_stealth" name="skill_stealth" value="stealth"> <label class="skill_stealth"> Stealth </label> </div>
+      <div> <input type="checkbox" id="skill_arcana" name="skill_arcana" value="arcana"> <label class="skill_arcana"> Arcana </label> </div>
+      <div> <input type="checkbox" id="skill_history" name="skill_history" value="history"> <label class="skill_history"> History </label> </div>
+      <div> <input type="checkbox" id="skill_investigation" name="skill_investigation" value="investigation"> <label class="skill_investigation"> Investigation </label> </div>
+      <div> <input type="checkbox" id="skill_nature" name="skill_nature" value="nature"> <label class="skill_nature"> Nature </label> </div>
+      <div> <input type="checkbox" id="skill_religion" name="skill_religion" value="religion"> <label class="skill_religion"> Religion </label> </div>
+      <div> <input type="checkbox" id="skill_animal_handling" name="skill_animal_handling" value="animal_handling"> <label class="skill_animal_handling"> Animal Handling </label> </div>
+      <div> <input type="checkbox" id="skill_insight" name="skill_insight" value="insight"> <label class="skill_insight"> Insight </label> </div>
+      <div> <input type="checkbox" id="skill_medicine" name="skill_medicine" value="medicine"> <label class="skill_medicine"> Medicine </label> </div>
+      <div> <input type="checkbox" id="skill_perception" name="skill_perception" value="perception"> <label class="skill_perception"> Perception </label> </div>
+      <div> <input type="checkbox" id="skill_survival" name="skill_survival" value="survival"> <label class="skill_survival"> Survival </label> </div>
+      <div> <input type="checkbox" id="skill_deception" name="skill_deception" value="deception"> <label class="skill_deception"> Deception </label> </div>
+      <div> <input type="checkbox" id="skill_intimidation" name="skill_intimidation" value="intimidation"> <label class="skill_intimidation"> Intimidation </label> </div>
+      <div> <input type="checkbox" id="skill_performance" name="skill_performance" value="performance"> <label class="skill_performance"> Performance </label> 
+      </div>
+      <div> <input type="checkbox" id="skill_persuasion" name="skill_persuasion" value="persuasion"> <label class="skill_persuasion"> Persuasion </label> </div>
+    </div>
+    <br>
+    <div class="stat-row-60"> <label class="stat-label"> Damage Vulnerabilities </label> <span> Count: <input type="number" id="vulnerabilities" name="vulnerabilities" min="0" max="99" value="0"> </span> </div>
+    <div class="stat-row-60"> <label class="stat-label"> Damage Resistances </label> <span> Count: <input type="number" id="resistances" name="resistances" min="0" max="99" value="0"> </span> </div>
+    <div class="stat-row-60"> <label class="stat-label"> Damage Immunities </label> <span> Count: <input type="number" id="immunities" name="immunities" min="0" max="99" value="0"> </span> </div>
+    <div class="stat-row-60"> <label class="stat-label"> Condition Immunities </label> <span> Count: <input type="number" id="conditions" name="conditions" min="0" max="99" value="0"> </span> </div>
+    <br>
+    <label class="stat-label"> Senses </label>
+    <div class="double-columns">
+      <div class="stat-row-80" style="padding-left:20px"><label class="stat-label"> blindsight </label> <span><input type="number" id="blindsight" name="blindsight" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80" style="padding-left:20px"><label class="stat-label"> darkvision </label> <span><input type="number" id="darkvision" name="darkvision" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80" style="padding-left:20px"><label class="stat-label"> tremorsense </label> <span><input type="number" id="tremorsense" name="tremorsense" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80" style="padding-left:20px"><label class="stat-label"> truesight </label> <span><input type="number" id="truesight" name="truesight" min="0" max="500" value="0"> ft.</span></div>
+      <div class="stat-row-80" style="padding-left:20px"><label class="stat-label"> passive Perception </label> <input type="number" id="passive_perception" name="passive_perception" min="0" max="50" value="10"></div>
+    </div>
+    <hr>
+    <span><label class="stat-label"> Legendary Resistance: </label>
+    <input type="number" id="legendary_resistance" name="legendary_resistance" min="0" max="10" value="0">/Day</span>
+    <br>
+    <label class="stat-label"> ACTIONS </label>
+    <hr>
+    <div class="stat-row-40"> Total count: <input type="number" id="actions_total" name="actions_total" min="0" max="100" value="0"> </div>
+    <div class="stat-row-40"> Attack count: <input type="number" id="actions_attack" name="actions_attack" min="0" max="100" value="0"> </div>
+    <div class="stat-row-40"> Average damage: <input type="number" id="actions_avg_dmg" name="actions_avg_dmg" min="0" max="999" value="0"> </div>
+    <br>
+    <label class="stat-label"> REACTIONS </label>
+    <hr>
+    <div class="stat-row-40"> Count: <input type="number" id="reactions" name="reactions" min="0" max="100" value="0"> </div>
+    <br>
+    <label class="stat-label"> LEGENDARY ACTIONS </label>
+    <hr>
+    <div class="stat-row-80"> Number of actions: <input type="number" id="legendary_actions_num" name="legendary_actions_num" min="0" max="100" value="0"> </div>
+    <div class="stat-row-80"> Number of Legendary Actions that cost 1 action: <input type="number" id="legendary_actions_cost_1" name="legendary_actions_cost_1" min="0" max="100" value="0"> </div>
+    <div class="stat-row-80"> Number of Legendary Actions that cost 2 action: <input type="number" id="legendary_actions_cost_2" name="legendary_actions_cost_2" min="0" max="100" value="0"> </div>
+    <div class="stat-row-80"> Number of Legendary Actions that cost 3 action: <input type="number" id="legendary_actions_cost_3" name="legendary_actions_cost_3" min="0" max="999" value="0"> </div>
+    <div style="width:100%; display:flex; justify-content: center; margin: 1rem 0;"><input type="submit" value="Calculate CR" style="background-color:#a61e1e; color: white;"></div>
+  </form>
+</body>
+</html>
